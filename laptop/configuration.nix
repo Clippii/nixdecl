@@ -172,6 +172,7 @@ in
     libnotify
     wget
     git
+    git-credential-manager
     code-cursor
     spotify
     jq
