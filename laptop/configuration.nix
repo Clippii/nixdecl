@@ -65,7 +65,7 @@ in
     extraPackages = with pkgs; [
       intel-media-driver                   # iHD VAAPI driver — required for Xe
       intel-compute-runtime                # OpenCL via NEO (Xe supported)
-      libva-vdpau-driver
+      libva-vdpau-driver                           # VDPAU via VAAPI bridge
       libvdpau-va-gl
     ];
     extraPackages32 = with pkgs.pkgsi686Linux; [
@@ -138,7 +138,9 @@ in
   # ── Hyprland ──────────────────────────────────────────────────────────────
   programs.hyprland = {
     enable = true;
+    withUWSM = true;
     package = hyprlandPkg;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     xwayland.enable = true;
   };
 
@@ -148,7 +150,7 @@ in
   environment.systemPackages = with pkgs; [
     # ── Apps (carried over from laptop) ──
     (discord.override {
-      withOpenASAR = false;
+      withOpenASAR = true;
       withVencord = true;
     })
     (pkgs.wrapOBS {
