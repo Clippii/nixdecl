@@ -65,7 +65,7 @@ in
     extraPackages = with pkgs; [
       intel-media-driver                   # iHD VAAPI driver — required for Xe
       intel-compute-runtime                # OpenCL via NEO (Xe supported)
-      vaapiVdpau                           # VDPAU via VAAPI bridge
+      libva-vdpau-driver
       libvdpau-va-gl
     ];
     extraPackages32 = with pkgs.pkgsi686Linux; [
