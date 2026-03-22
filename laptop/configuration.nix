@@ -162,6 +162,7 @@ in
     mpv
     p7zip
     cava
+    microsoft-edge
     unzip
     catppuccin-cursors
     parted
